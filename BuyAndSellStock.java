@@ -10,6 +10,7 @@ class Solution {
 
             // If the current price(i) is less than the previously set buyPrice, update buyPrice to the current price. 
             // This ensures that we buy at the lowest price possible.
+            
             if (buyPrice > prices[i]) {
                 buyPrice = prices[i];
             }
