@@ -1,6 +1,9 @@
+import java.util.*;
+
 class Solution {
     public String minWindow(String s, String t) {
-        // If `s` is shorter than `t`, it's impossible to form the window, return empty string.
+        // If `s` is shorter than `t`, it's impossible to form the window, return empty
+        // string.
         if (s.length() < t.length()) {
             return "";
         }
@@ -15,14 +18,15 @@ class Solution {
         int targetCharsRemaining = t.length();
 
         // Initialize variables for tracking the minimum window.
-        int[] minWindow = {0, Integer.MAX_VALUE}; // Stores start and end indices of the minimum window.
+        int[] minWindow = { 0, Integer.MAX_VALUE }; // Stores start and end indices of the minimum window.
         int startIndex = 0; // Start index of the current window.
 
         // Iterate over the string `s` using the end pointer.
         for (int endIndex = 0; endIndex < s.length(); endIndex++) {
             char ch = s.charAt(endIndex);
 
-            // If the current character is in `t` and still needed, decrement the remaining count.
+            // If the current character is in `t` and still needed, decrement the remaining
+            // count.
             if (charCount.containsKey(ch) && charCount.get(ch) > 0) {
                 targetCharsRemaining--;
             }

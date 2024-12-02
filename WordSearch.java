@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
 
     // Variables to store the dimensions of the board.
@@ -8,7 +10,7 @@ class Solution {
     private Set<String> visited;
 
     public boolean exist(char[][] board, String word) {
-        
+
         // Initialize the dimensions of the board.
         rows = board.length;
         cols = board[0].length;
@@ -44,10 +46,12 @@ class Solution {
     private boolean dfs(char[][] board, String word, int r, int c, int k) {
 
         // If all characters of the word have been matched, return true.
-        if (k == word.length()) return true;
+        if (k == word.length())
+            return true;
 
         // Check for out-of-bounds, already visited cells, or character mismatch.
-        if (r < 0 || r >= rows || c < 0 || c >= cols || visited.contains(r + "," + c) || board[r][c] != word.charAt(k)) {
+        if (r < 0 || r >= rows || c < 0 || c >= cols || visited.contains(r + "," + c)
+                || board[r][c] != word.charAt(k)) {
             return false;
         }
 
@@ -56,9 +60,9 @@ class Solution {
 
         // Explore all 4 possible directions (up, down, left, right).
         boolean result = dfs(board, word, r + 1, c, k + 1) || // Down
-                         dfs(board, word, r - 1, c, k + 1) || // Up
-                         dfs(board, word, r, c + 1, k + 1) || // Right
-                         dfs(board, word, r, c - 1, k + 1);   // Left
+                dfs(board, word, r - 1, c, k + 1) || // Up
+                dfs(board, word, r, c + 1, k + 1) || // Right
+                dfs(board, word, r, c - 1, k + 1); // Left
 
         // Backtrack: unmark the current cell as visited.
         visited.remove(r + "," + c);
